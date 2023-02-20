@@ -50,8 +50,6 @@ const GeographyChart = ({ isDashBoard = false }) => {
       projectionRotation={[0, 0, 0]}
       borderWidth={1.5}
       borderColor="#ffffff"
-    
-    
       fill={[
         {
           match: {
@@ -72,7 +70,6 @@ const GeographyChart = ({ isDashBoard = false }) => {
           id: "gradient",
         },
       ]}
-      
       legends={
         !isDashBoard
           ? [
@@ -100,7 +97,7 @@ const GeographyChart = ({ isDashBoard = false }) => {
                 ],
               },
             ]
-          : null
+          : undefined
       }
     />
   );
