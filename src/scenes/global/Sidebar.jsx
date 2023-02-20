@@ -196,7 +196,7 @@ const SidebarMenu = () => {
             <SidebarItem
               title="Line Chart"
               to="/line"
-              icon={<TimeLineOutlinedIcon />}
+              icon={<TimelineOutlinedIcon />}
             />
             <SidebarItem
               title="Geography Chart"
