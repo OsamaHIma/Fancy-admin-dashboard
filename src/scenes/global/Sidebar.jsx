@@ -11,7 +11,7 @@ import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined
 import HelpOutlinedIcon from "@mui/icons-material/HelpOutlined";
 import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
-import TimeLineOutlinedIcon from "@mui/icons-material/TimeLineOutlined";
+// import TimeLineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
@@ -200,11 +200,11 @@ const Sidebarl = () => {
               to="/pie"
               icon={<PieChartOutlineOutlinedIcon />}
             />
-            <SidebarItem
+            {/* <SidebarItem
               title="Line Chart"
               to="/line"
               icon={<TimeLineOutlinedIcon />}
-            />
+            /> */}
             <SidebarItem
               title="Geography Chart"
               to="/geography"
