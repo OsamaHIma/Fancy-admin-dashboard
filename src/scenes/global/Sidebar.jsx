@@ -11,13 +11,13 @@ import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined
 import HelpOutlinedIcon from "@mui/icons-material/HelpOutlined";
 import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
-// import TimeLineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
+import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 
-const SidebarItem = ({ title, to, icon, selected, setSelected }) => {
+const SidebarItem = ({ title, to, icon }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   return (
@@ -29,7 +29,7 @@ const SidebarItem = ({ title, to, icon, selected, setSelected }) => {
   );
 };
 
-const Sidebarl = () => {
+const SidebarMenu = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const { collapseSidebar, collapsed } = useProSidebar();
@@ -66,13 +66,6 @@ const Sidebarl = () => {
           ".css-16jkw2k >.ps-menu-button": {
             paddingLeft: "15px",
           },
-          // ".ps-menuitem-root": {
-          //   color: "#333",
-          //   backgroundColor: "transparent",
-          // },
-          // ".css-16jkw2k >.ps-menu-button:hover": {
-          //   color: "#6870fa",
-          // },
         }}
         className="sidebar"
       >
@@ -200,11 +193,11 @@ const Sidebarl = () => {
               to="/pie"
               icon={<PieChartOutlineOutlinedIcon />}
             />
-            {/* <SidebarItem
+            <SidebarItem
               title="Line Chart"
               to="/line"
               icon={<TimeLineOutlinedIcon />}
-            /> */}
+            />
             <SidebarItem
               title="Geography Chart"
               to="/geography"
@@ -216,4 +209,4 @@ const Sidebarl = () => {
     </Box>
   );
 };
-export default Sidebarl;
+export default SidebarMenu;
