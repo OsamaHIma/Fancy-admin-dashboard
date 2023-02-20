@@ -115,10 +115,9 @@ const Sidebarl = () => {
             <Box mb="25px" mt="10px">
               <Box display="flex" justifyContent="center" alignItems="center">
                 <img
-                  src="/assets/myphoto.jfif"
+                  src="/assets/meme.jpg"
                   alt="Profile-user"
-                  width="100px"
-                  height="100px"
+                  width="75%"
                   style={{ cursor: "pointer", borderRadius: "50%" }}
                 />
               </Box>
