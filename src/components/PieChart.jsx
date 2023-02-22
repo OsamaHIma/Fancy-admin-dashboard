@@ -9,6 +9,12 @@ const PieChart = () => {
     <ResponsivePie
       data={data}
       theme={{
+        tooltip: {
+          container: {
+            color: colors.gray[100],
+            background: colors.primary[400],
+          },
+        },
         axis: {
           domain: {
             line: {
@@ -36,6 +42,11 @@ const PieChart = () => {
           },
         },
       }}
+      // tooltip={({ id, value, color }) => (
+      //   <strong style={{ color }}>
+      //     {id}: {value}
+      //   </strong>
+      // )}
       margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
       innerRadius={0.5}
       padAngle={0.7}
@@ -61,7 +72,7 @@ const PieChart = () => {
           id: "dots",
           type: "patternDots",
           background: "inherit",
-          color: "rgba(255, 255, 255, 0.3)",
+          color: colors.gray[100],
           size: 4,
           padding: 1,
           stagger: true,
@@ -70,7 +81,7 @@ const PieChart = () => {
           id: "lines",
           type: "patternLines",
           background: "inherit",
-          color: "rgba(255, 255, 255, 0.3)",
+          color: colors.gray[100],
           rotation: -45,
           lineWidth: 6,
           spacing: 10,
@@ -86,7 +97,7 @@ const PieChart = () => {
           itemsSpacing: 0,
           itemWidth: 100,
           itemHeight: 18,
-          itemTextColor: "#999",
+          itemTextColor: colors.gray[100],
           itemDirection: "left-to-right",
           itemOpacity: 1,
           symbolSize: 18,
@@ -95,7 +106,7 @@ const PieChart = () => {
             {
               on: "hover",
               style: {
-                itemTextColor: "#000",
+                itemTextColor: colors.gray[100],
               },
             },
           ],
