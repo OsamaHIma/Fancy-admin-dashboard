@@ -14,8 +14,6 @@ const userSchema = yup.object().shape({
   address2: yup.string().required("required"),
 });
 const Form = () => {
-  //   const theme = useTheme();
-  //   const Form = tokens(theme.palette.mode);
   const isNonMobile = useMediaQuery("(min-width:600px)");
   const initialValues = {
     firstName: "",

@@ -8,8 +8,8 @@ const StatBox = ({ subtitle, icon, progress }) => {
   const randomTitleNum = Math.floor(Math.random() * 100001);
   const randomProgressNum = Math.random().toFixed(2);
   return (
-    <Box width="100%" m="0 30px">
-      <Box display="flex" justifyContent="space-between">
+    <div className="row d-flex">
+      <div className="col-md-6 text-center">
         <Box>
           {icon}
           <Typography
@@ -21,23 +21,23 @@ const StatBox = ({ subtitle, icon, progress }) => {
           </Typography>
         </Box>
         <Box>
-          <ProgressCircle progress={randomProgressNum} />
+          <Typography variant="h5" sx={{ color: colors.green[100], mt: 1.7 }}>
+            {subtitle}
+          </Typography>
         </Box>
-      </Box>
+      </div>
 
-      <Box display="flex" justifyContent="space-between">
-        <Typography variant="h5" sx={{ color: colors.green[100] }}>
-          {subtitle}
-        </Typography>
+      <div className="col-md-6 text-center">
+        <ProgressCircle progress={randomProgressNum} size="60"/>
         <Typography
           variant="h5"
           fontStyle="italic"
-          sx={{ color: colors.green[600] }}
+          sx={{ color: colors.green[600], mt:1 }}
         >
           +{(randomProgressNum * 100).toFixed()}%
         </Typography>
-      </Box>
-    </Box>
+      </div>
+    </div>
   );
 };
 export default StatBox;

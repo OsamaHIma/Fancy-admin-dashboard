@@ -1,8 +1,9 @@
-import { useState } from "react";
 import { Sidebar, Menu, MenuItem, useProSidebar } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { tokens } from "../../theme";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
@@ -21,19 +22,21 @@ const SidebarItem = ({ title, to, icon }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   return (
-    <NavLink to={to}>
-      <MenuItem style={{ color: colors.gray[100] }} icon={icon}>
-        <Typography>{title}</Typography>
-      </MenuItem>
-    </NavLink>
+    <MenuItem
+      style={{ color: colors.gray[100] }}
+      icon={icon}
+      component={<NavLink to={to} />}
+    >
+      <Typography>{title}</Typography>
+    </MenuItem>
   );
 };
 
 const SidebarMenu = () => {
+  const isMobile = useMediaQuery("(max-width:600px)");
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const { collapseSidebar, collapsed } = useProSidebar();
-  const [selected, setSelected] = useState("Dashboard");
   return (
     <Box
       height="100%"
@@ -68,41 +71,44 @@ const SidebarMenu = () => {
           },
         }}
         className="sidebar"
+        defaultCollapsed={true}
       >
         <Menu iconShape="square">
           {/* Logo and menu icon */}
-          <MenuItem
-            onClick={() => collapseSidebar()}
-            style={{
-              paddingTop: "13px",
-              color: colors.gray[100],
-              backgroundColor: "transparent",
-            }}
-            icon={
-              collapsed ? (
-                <IconButton>
-                  <MenuOutlinedIcon />
-                </IconButton>
-              ) : (
-                <IconButton>
-                  <CloseOutlinedIcon />
-                </IconButton>
-              )
-            }
-          >
-            {!collapsed && (
-              <Box
-                display="flex"
-                justifyContent="space-between"
-                alignItems="center"
-                ml="15px"
-              >
-                <Typography variant="h3" color={colors.gray[100]}>
-                  ADMINS
-                </Typography>
-              </Box>
-            )}
-          </MenuItem>
+          {isMobile ? undefined : (
+            <MenuItem
+              onClick={() => collapseSidebar()}
+              style={{
+                paddingTop: "13px",
+                color: colors.gray[100],
+                backgroundColor: "transparent",
+              }}
+              icon={
+                collapsed ? (
+                  <IconButton>
+                    <MenuOutlinedIcon />
+                  </IconButton>
+                ) : (
+                  <IconButton>
+                    <CloseOutlinedIcon />
+                  </IconButton>
+                )
+              }
+            >
+              {!collapsed && (
+                <Box
+                  display="flex"
+                  justifyContent="space-between"
+                  alignItems="center"
+                  ml="15px"
+                >
+                  <Typography variant="h3" color={colors.gray[100]}>
+                    ADMINS
+                  </Typography>
+                </Box>
+              )}
+            </MenuItem>
+          )}
           {/* User */}
           {!collapsed && (
             <Box mb="25px" mt="10px">
