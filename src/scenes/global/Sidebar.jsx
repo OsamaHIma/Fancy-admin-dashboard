@@ -60,8 +60,8 @@ const SidebarMenu = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   return (
-    <nav className="navbar fixed-top pt-0">
-      <div className="container-fluid">
+    <nav className="navbar fixed-top pt-3">
+      <div className="container-fluid p-0 ms-3">
         <IconButton
           data-bs-toggle="offcanvas"
           data-bs-target="#offcanvasNavbar"
