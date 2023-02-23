@@ -42,11 +42,6 @@ const LineChart = ({ isDashBoard = false }) => {
             fill: colors.gray[100],
           },
         },
-        tooltip: {
-          container: {
-            color: colors.primary[500],
-          },
-        },
       }}
       colors={isDashBoard ? { datum: "color" } : { scheme: "nivo" }}
       margin={{ top: 50, right: 110, bottom: 50, left: 60 }}

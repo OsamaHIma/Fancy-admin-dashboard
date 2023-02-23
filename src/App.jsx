@@ -3,7 +3,7 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { Route, Routes } from "react-router-dom";
 import Topbar from "./scenes/global/Topbar";
 import Dashboard from "./scenes/dashboard";
-import Sidebarl from "./scenes/global/Sidebar";
+import SidebarMenu from "./scenes/global/Sidebar";
 import { useEffect, useState } from "react";
 import Preloader from "./scenes/Loading";
 
@@ -33,7 +33,7 @@ function App() {
             <Preloader />
           ) : (
             <>
-              <Sidebarl />
+              <SidebarMenu />
               <main className="content">
                 <Topbar />
                 <Routes>

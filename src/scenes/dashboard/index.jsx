@@ -24,7 +24,7 @@ const Dashboard = () => {
         <div className="col-md-6">
           <Header title="DASHBOARD" subTitle="Welcome to your dashboard!" />
         </div>
-        <div className="col-md-6">
+        <div className="col-md-6 d-md-flex justify-content-end">
           <Box>
             <Button
               sx={{

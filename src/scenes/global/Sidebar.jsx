@@ -1,8 +1,7 @@
-import { Sidebar, Menu, MenuItem, useProSidebar } from "react-pro-sidebar";
+// import { Sidebar, Menu, MenuItem, useProSidebar } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import { tokens } from "../../theme";
-import useMediaQuery from "@mui/material/useMediaQuery";
 
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
@@ -22,102 +21,82 @@ const SidebarItem = ({ title, to, icon }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   return (
-    <MenuItem
-      style={{ color: colors.gray[100] }}
-      icon={icon}
-      component={<NavLink to={to} />}
+    <Box
+      className="d-flex"
+      sx={{
+        color: colors.gray[100],
+        padding: "1.3rem 1rem",
+        "&:hover": {
+          backgroundColor: `${colors.green[400]}10 !important`,
+          borderRadius: "7px",
+        },
+        "&:has(a.active)": {
+          color: "#6870fa",
+        },
+        "a:hover": {
+          color: "currentColor !important",
+        },
+      }}
     >
-      <Typography>{title}</Typography>
-    </MenuItem>
+      <li>
+        {icon}
+        <NavLink
+          to={to}
+          style={{
+            marginLeft: "1.3rem",
+            fontWeight: "600",
+            transition: ".2s all ease-in-out",
+            width: "100%",
+          }}
+        >
+          {title}
+        </NavLink>
+      </li>
+    </Box>
   );
 };
 
 const SidebarMenu = () => {
-  const isMobile = useMediaQuery("(max-width:600px)");
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const { collapseSidebar, collapsed } = useProSidebar();
   return (
-    <Box
-      height="100%"
-      sx={{
-        ".active *": {
-          color: "#6870fa",
-          fontWeight: "600",
-        },
-      }}
-    >
-      <Sidebar
-        style={{
-          border: "none",
-          height: "100%",
-        }}
-        rootStyles={{
-          ".ps-sidebar-container": {
-            background: `${colors.primary[400]}`,
-          },
-          ".ps-icon-wrapper": {
-            backgroundColor: "transparent !important",
-          },
-          ".ps-menu-button": {
-            transition: ".2s all ease-in-out",
-          },
-          ".css-16jkw2k >.ps-menu-button:hover": {
-            backgroundColor: `${colors.green[400]}10`,
-            borderRadius: "7px",
-          },
-          ".css-16jkw2k >.ps-menu-button": {
-            paddingLeft: "15px",
-          },
-        }}
-        className="sidebar"
-        defaultCollapsed={true}
-      >
-        <Menu iconShape="square">
-          {/* Logo and menu icon */}
-          {isMobile ? undefined : (
-            <MenuItem
-              onClick={() => collapseSidebar()}
-              style={{
-                paddingTop: "13px",
-                color: colors.gray[100],
-                backgroundColor: "transparent",
-              }}
-              icon={
-                collapsed ? (
-                  <IconButton>
-                    <MenuOutlinedIcon />
-                  </IconButton>
-                ) : (
-                  <IconButton>
-                    <CloseOutlinedIcon />
-                  </IconButton>
-                )
-              }
-            >
-              {!collapsed && (
-                <Box
-                  display="flex"
-                  justifyContent="space-between"
-                  alignItems="center"
-                  ml="15px"
-                >
-                  <Typography variant="h3" color={colors.gray[100]}>
-                    ADMINS
-                  </Typography>
-                </Box>
-              )}
-            </MenuItem>
-          )}
-          {/* User */}
-          {!collapsed && (
+    <nav className="navbar fixed-top pt-0">
+      <div className="container-fluid">
+        <IconButton
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar"
+        >
+          <MenuOutlinedIcon />
+        </IconButton>
+        <div
+          className="offcanvas offcanvas-start"
+          tabIndex="-1"
+          id="offcanvasNavbar"
+          aria-labelledby="offcanvasNavbarLabel"
+          style={{ maxWidth: "80%", width: "300px" }}
+        >
+          <div
+            className="offcanvas-header"
+            style={{ backgroundColor: colors.primary[400] }}
+          >
+            <Typography variant="h3" color={colors.gray[100]}>
+              ADMINS
+            </Typography>
+            <IconButton data-bs-dismiss="offcanvas" aria-label="Close">
+              <CloseOutlinedIcon />
+            </IconButton>
+          </div>
+          <div
+            className="offcanvas-body pe-0"
+            style={{ backgroundColor: colors.primary[400] }}
+          >
             <Box mb="25px" mt="10px">
               <Box display="flex" justifyContent="center" alignItems="center">
                 <img
                   src="/assets/meme.jpg"
                   alt="Profile-user"
-                  width="75%"
-                  style={{ cursor: "pointer", borderRadius: "50%" }}
+                  className="w-75 shadow rounded-circle"
                 />
               </Box>
               <Box textAlign="center">
@@ -134,85 +113,90 @@ const SidebarMenu = () => {
                 </Typography>
               </Box>
             </Box>
-          )}
-          {/* Menu items */}
-          <Box>
-            <SidebarItem title="Dashboard" to="/" icon={<HomeOutlinedIcon />} />
-            <Typography
-              variant="h6"
-              color={colors.gray[300]}
-              sx={{ m: "15px 0 5px 20px" }}
-            >
-              Data
-            </Typography>
-            <SidebarItem
-              title="Manage Team"
-              to="/team"
-              icon={<PeopleOutlinedIcon />}
-            />
-            <SidebarItem
-              title="Contacts Information"
-              to="/contacts"
-              icon={<ContactsOutlinedIcon />}
-            />
-            <SidebarItem
-              title="Invoices Balances"
-              to="/invoices"
-              icon={<ReceiptOutlinedIcon />}
-            />
-            <Typography
-              variant="h6"
-              color={colors.gray[300]}
-              sx={{ m: "15px 0 5px 20px" }}
-            >
-              Pages
-            </Typography>
-            <SidebarItem
-              title="Profile Form"
-              to="/form"
-              icon={<PersonOutlinedIcon />}
-            />
-            <SidebarItem
-              title="Calendar"
-              to="/calendar"
-              icon={<CalendarTodayOutlinedIcon />}
-            />
-            <SidebarItem
-              title="FAQ Page"
-              to="/faq"
-              icon={<HelpOutlinedIcon />}
-            />
-            <Typography
-              variant="h6"
-              color={colors.gray[300]}
-              sx={{ m: "15px 0 5px 20px" }}
-            >
-              Charts
-            </Typography>
-            <SidebarItem
-              title="bar Chart"
-              to="/bar"
-              icon={<BarChartOutlinedIcon />}
-            />
-            <SidebarItem
-              title="Pie Chart"
-              to="/pie"
-              icon={<PieChartOutlineOutlinedIcon />}
-            />
-            <SidebarItem
-              title="Line Chart"
-              to="/line"
-              icon={<TimelineOutlinedIcon />}
-            />
-            <SidebarItem
-              title="Geography Chart"
-              to="/geography"
-              icon={<MapOutlinedIcon />}
-            />
-          </Box>
-        </Menu>
-      </Sidebar>
-    </Box>
+            <ul className="navbar-nav justify-content-end flex-grow-1">
+              <Box>
+                <SidebarItem
+                  title="Dashboard"
+                  to="/"
+                  icon={<HomeOutlinedIcon />}
+                />
+                <Typography
+                  variant="h6"
+                  color={colors.gray[300]}
+                  sx={{ m: "15px 0 5px 20px" }}
+                >
+                  Data
+                </Typography>
+                <SidebarItem
+                  title="Manage Team"
+                  to="/team"
+                  icon={<PeopleOutlinedIcon />}
+                />
+                <SidebarItem
+                  title="Contacts Information"
+                  to="/contacts"
+                  icon={<ContactsOutlinedIcon />}
+                />
+                <SidebarItem
+                  title="Invoices Balances"
+                  to="/invoices"
+                  icon={<ReceiptOutlinedIcon />}
+                />
+                <Typography
+                  variant="h6"
+                  color={colors.gray[300]}
+                  sx={{ m: "15px 0 5px 20px" }}
+                >
+                  Pages
+                </Typography>
+                <SidebarItem
+                  title="Profile Form"
+                  to="/form"
+                  icon={<PersonOutlinedIcon />}
+                />
+                <SidebarItem
+                  title="Calendar"
+                  to="/calendar"
+                  icon={<CalendarTodayOutlinedIcon />}
+                />
+                <SidebarItem
+                  title="FAQ Page"
+                  to="/faq"
+                  icon={<HelpOutlinedIcon />}
+                />
+                <Typography
+                  variant="h6"
+                  color={colors.gray[300]}
+                  sx={{ m: "15px 0 5px 20px" }}
+                >
+                  Charts
+                </Typography>
+                <SidebarItem
+                  title="bar Chart"
+                  to="/bar"
+                  icon={<BarChartOutlinedIcon />}
+                />
+                <SidebarItem
+                  title="Pie Chart"
+                  to="/pie"
+                  icon={<PieChartOutlineOutlinedIcon />}
+                />
+                <SidebarItem
+                  title="Line Chart"
+                  to="/line"
+                  icon={<TimelineOutlinedIcon />}
+                />
+                <SidebarItem
+                  title="Geography Chart"
+                  to="/geography"
+                  icon={<MapOutlinedIcon />}
+                />
+              </Box>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
   );
 };
 export default SidebarMenu;
