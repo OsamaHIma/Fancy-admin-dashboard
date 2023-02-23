@@ -21,7 +21,7 @@ const StatBox = ({ subtitle, icon, progress }) => {
           </Typography>
         </Box>
         <Box>
-          <Typography variant="h5" sx={{ color: colors.green[100], mt: 1.7 }}>
+          <Typography variant="h5" sx={{ color: colors.green[100], mt: 1.7 }} className="mb-3">
             {subtitle}
           </Typography>
         </Box>
