@@ -3,7 +3,7 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { Route, Routes } from "react-router-dom";
 import Topbar from "./scenes/global/Topbar";
 import Dashboard from "./scenes/dashboard";
-import Navbar from "./scenes/global/Sidebar";
+import Navbar from "./scenes/global/Navbar";
 import { useEffect, useState } from "react";
 import Preloader from "./scenes/Loading";
 

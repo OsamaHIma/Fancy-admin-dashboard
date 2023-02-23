@@ -63,7 +63,7 @@ const Navbar = () => {
   return (
     <>
       <nav className="navbar pt-3">
-        <div className="container-fluid p-0 ms-3">
+        <div className="container-fluid p-0 ms-3 flex-nowrap">
           <IconButton
             data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasNavbar"
