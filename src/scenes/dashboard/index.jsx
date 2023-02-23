@@ -163,7 +163,7 @@ const Dashboard = () => {
             overflow="auto"
             borderRadius="5px"
             py="0.7rem"
-            height="50vh"
+            height="51.5vh"
           >
             <Box
               borderBottom={`4px solid ${colors.primary[500]}`}

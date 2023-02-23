@@ -3,7 +3,7 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { Route, Routes } from "react-router-dom";
 import Topbar from "./scenes/global/Topbar";
 import Dashboard from "./scenes/dashboard";
-import SidebarMenu from "./scenes/global/Sidebar";
+import Navbar from "./scenes/global/Sidebar";
 import { useEffect, useState } from "react";
 import Preloader from "./scenes/Loading";
 
@@ -33,11 +33,11 @@ function App() {
             <Preloader />
           ) : (
             <>
-              <SidebarMenu />
               <main className="content">
-                <Topbar />
+                {/* <Topbar /> */}
                 <Routes>
-                  <Route path="/" element={<Dashboard />} />
+                  <Route path="/" element={<Navbar />} >
+                  <Route index element={<Dashboard />} />
                   <Route path="/team" element={<Team />} />
                   <Route path="/contacts" element={<Contacts />} />
                   <Route path="/invoices" element={<Invoices />} />
@@ -48,6 +48,8 @@ function App() {
                   <Route path="/pie" element={<PieChart />} />
                   <Route path="/line" element={<Line />} />
                   <Route path="/geography" element={<Geography />} />
+
+                </Route>
                 </Routes>
               </main>
             </>
