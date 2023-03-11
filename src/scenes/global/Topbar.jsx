@@ -24,7 +24,6 @@ const Topbar = () => {
         <IconButton type="button" sx={{ p: 1 }}>
           <SearchIcon />
         </IconButton>
-        <IconButton></IconButton>
       </Box>
       {/* Icons */}
       <Box display="flex">
